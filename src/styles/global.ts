@@ -10,4 +10,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.palette.gray[600]};
   }
+
+  body, button, input, textarea {
+    font-family: 'Inter', sans-serif;
+  }
 `
