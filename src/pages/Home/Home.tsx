@@ -1,7 +1,8 @@
 import { Header } from '@components/Header'
+import { TaskList } from '@components/TaskList'
 import { TaskSummary } from '@components/TaskSummary'
 
-import { TaskSummaryContainer } from './Home.styles'
+import { TaskListContainer, TaskSummaryContainer } from './Home.styles'
 
 export const Home = () => {
   return (
@@ -11,6 +12,10 @@ export const Home = () => {
       <TaskSummaryContainer>
         <TaskSummary />
       </TaskSummaryContainer>
+
+      <TaskListContainer>
+        <TaskList />
+      </TaskListContainer>
     </>
   )
 }
