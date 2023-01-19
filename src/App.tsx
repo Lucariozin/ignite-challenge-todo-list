@@ -1,3 +1,15 @@
+import { ThemeProvider } from 'styled-components'
+
+import { GlobalStyles } from '@styles/global'
+import { theme } from '@styles/theme'
+
+import { Home } from '@pages/Home'
+
 export const App = () => {
-  return <h1>Hello</h1>
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Home />
+    </ThemeProvider>
+  )
 }
