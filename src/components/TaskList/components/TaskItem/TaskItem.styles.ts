@@ -56,10 +56,15 @@ export const CheckboxContainer = styled(Checkbox.Root)`
   }
 `
 
-export const TaskName = styled.p`
+interface TaskNameProps {
+  isCompleted: boolean
+}
+
+export const TaskName = styled.p<TaskNameProps>`
   font-size: 0.875rem;
   line-height: 1.1rem;
-  color: ${({ theme }) => theme.palette.gray[100]};
+  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
+  color: ${({ theme, isCompleted }) => (isCompleted ? theme.palette.gray[300] : theme.palette.gray[100])};
 `
 
 export const DeleteTaskButton = styled.button`
