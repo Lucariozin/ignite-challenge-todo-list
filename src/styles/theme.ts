@@ -28,7 +28,7 @@ export const theme = {
       500: '#1E6F9F',
     },
     red: {
-      100: '',
+      100: '#E25858',
     },
   },
   breakpoints: {
