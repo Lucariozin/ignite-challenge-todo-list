@@ -27,3 +27,9 @@ export const NoTasksText = styled.p`
 export const NoTasksTextStrong = styled.strong`
   display: block;
 `
+
+export const TaskListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`

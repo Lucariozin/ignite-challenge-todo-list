@@ -37,6 +37,7 @@ interface ActionFunctionParams {
   payload?: Payload
 }
 
+// eslint-disable-next-line
 const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) => TasksContextState } = {
   ADD_NEW_TASK: ({ state, payload }) => {
     return state
