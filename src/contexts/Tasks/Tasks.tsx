@@ -1,74 +1,46 @@
-import { createContext, ReactNode, useContext, useReducer } from 'react'
+import { createContext, useCallback, useContext, useReducer } from 'react'
+import { TasksContextState, TasksProviderProps, UseTasksState } from './Tasks.types'
 
-type Task = {
-  id: string
-  name: string
-  completionDate?: Date
-}
-
-interface TasksContextState {
-  tasks: Task[]
-}
+import { reducer } from './Tasks.reducer'
 
 const initialState: TasksContextState = {
   tasks: [],
+  dispatch: () => {},
 }
 
 const TasksContext = createContext<TasksContextState>(initialState)
 
-interface TasksProviderProps {
-  children: ReactNode
-}
-
-type ActionTypes = 'ADD_NEW_TASK' | 'REMOVE_TASK' | 'MARK_TASK_AS_COMPLETED' | 'MARK_TASK_AS_IN_PROGRESS'
-
-type Payload = {
-  taskName?: string
-  taskId?: string
-}
-
-interface Action {
-  type: ActionTypes
-  payload?: Payload
-}
-
-interface ActionFunctionParams {
-  state: TasksContextState
-  payload?: Payload
-}
-
-// eslint-disable-next-line
-const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) => TasksContextState } = {
-  ADD_NEW_TASK: ({ state, payload }) => {
-    return state
-  },
-  REMOVE_TASK: ({ state, payload }) => {
-    return state
-  },
-  MARK_TASK_AS_COMPLETED: ({ state, payload }) => {
-    return state
-  },
-  MARK_TASK_AS_IN_PROGRESS: ({ state, payload }) => {
-    return state
-  },
-}
-
-const reducer = (state: TasksContextState, action: Action) => {
-  const { type, payload } = action
-
-  const actionFunction = actionFunctionsObj[type]
-
-  if (!actionFunction) return state
-
-  const newState = actionFunction({ state, payload })
-
-  return newState
-}
-
 export const TasksProvider = ({ children }: TasksProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  return <TasksContext.Provider value={state}>{children}</TasksContext.Provider>
+  const value: TasksContextState = {
+    ...state,
+    dispatch,
+  }
+
+  return <TasksContext.Provider value={value}>{children}</TasksContext.Provider>
 }
 
-export const useTasks = () => useContext(TasksContext)
+export const useTasks = (): UseTasksState => {
+  const { dispatch, ...state } = useContext(TasksContext)
+
+  const createNewTask = useCallback(
+    ({ taskName }: { taskName?: string }) => {
+      if (!taskName) return
+
+      dispatch({ type: 'ADD_NEW_TASK', payload: { taskName } })
+    },
+    [dispatch],
+  )
+
+  const completeTask = useCallback(
+    ({ taskId }: { taskId?: string }) => {
+      if (!taskId) return
+
+      dispatch({ type: 'MARK_TASK_AS_COMPLETED', payload: { taskId } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, createNewTask, completeTask }
+}
