@@ -14,8 +14,6 @@ import {
 export const TaskList = () => {
   const { tasks } = useTasks()
 
-  console.log('Tasks', tasks)
-
   const taskListIsEmpty = !tasks.length
 
   return (
