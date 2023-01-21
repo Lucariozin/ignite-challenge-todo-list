@@ -4,7 +4,9 @@ import { Action } from './Tasks.actions'
 export type Task = {
   id: string
   name: string
+  startDate: Date
   completionDate?: Date
+  deletionDate?: Date
 }
 
 export interface TasksContextState {

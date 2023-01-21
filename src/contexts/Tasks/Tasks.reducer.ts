@@ -5,6 +5,13 @@ import { Action, ActionFunctionParams, ActionTypes } from './Tasks.actions'
 
 // eslint-disable-next-line
 const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) => TasksContextState } = {
+  SET_ALL_TASKS: ({ state, payload }) => {
+    if (!payload?.tasks) return state
+
+    const { tasks } = payload
+
+    return { ...state, tasks }
+  },
   ADD_NEW_TASK: ({ state, payload }) => {
     if (!payload?.taskName) return state
 
@@ -13,6 +20,7 @@ const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) =
     const newTask: Task = {
       id: v4(),
       name: taskName,
+      startDate: new Date(),
     }
 
     const newTaskList = [newTask, ...state.tasks]
@@ -24,7 +32,7 @@ const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) =
 
     const { taskId } = payload
 
-    const newTaskList = state.tasks.filter((task) => taskId !== task.id)
+    const newTaskList = state.tasks.map((task) => (taskId === task.id ? { ...task, deletionDate: new Date() } : task))
 
     return { ...state, tasks: newTaskList }
   },

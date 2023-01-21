@@ -6,6 +6,10 @@ import { UseTasksState } from './Tasks.types'
 export const useTasks = (): UseTasksState => {
   const { dispatch, ...state } = useContext(TasksContext)
 
+  const sortedTaskList = state.tasks
+    .filter((task) => !task.deletionDate)
+    .sort((a, b) => b.startDate.getTime() - a.startDate.getTime())
+
   const createNewTask = useCallback(
     ({ taskName }: { taskName?: string }) => {
       if (!taskName) return
@@ -42,5 +46,5 @@ export const useTasks = (): UseTasksState => {
     [dispatch],
   )
 
-  return { ...state, createNewTask, completeTask, restartTask, removeTask }
+  return { ...state, tasks: sortedTaskList, createNewTask, completeTask, restartTask, removeTask }
 }
