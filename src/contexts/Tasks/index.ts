@@ -1,1 +1,2 @@
-export { useTasks, TasksProvider } from './Tasks'
+export { TasksProvider } from './Tasks'
+export { useTasks } from './Tasks.hook'
