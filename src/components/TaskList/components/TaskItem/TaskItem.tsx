@@ -12,7 +12,7 @@ interface TaskItemProps {
 }
 
 export const TaskItem = ({ name, id, completionDate }: TaskItemProps) => {
-  const { completeTask, restartTask } = useTasks()
+  const { completeTask, restartTask, removeTask } = useTasks()
 
   const isCompleted = !!completionDate
 
@@ -23,6 +23,10 @@ export const TaskItem = ({ name, id, completionDate }: TaskItemProps) => {
     }
 
     restartTask({ taskId: id })
+  }
+
+  const handleDeleteTask = () => {
+    removeTask({ taskId: id })
   }
 
   return (
@@ -37,7 +41,7 @@ export const TaskItem = ({ name, id, completionDate }: TaskItemProps) => {
 
       <TaskName isCompleted={isCompleted}>{name}</TaskName>
 
-      <DeleteTaskButton>
+      <DeleteTaskButton onClick={handleDeleteTask}>
         <Trash size={18} weight="bold" />
       </DeleteTaskButton>
     </Container>

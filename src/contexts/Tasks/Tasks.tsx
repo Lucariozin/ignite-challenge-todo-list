@@ -51,5 +51,14 @@ export const useTasks = (): UseTasksState => {
     [dispatch],
   )
 
-  return { ...state, createNewTask, completeTask, restartTask }
+  const removeTask = useCallback(
+    ({ taskId }: { taskId?: string }) => {
+      if (!taskId) return
+
+      dispatch({ type: 'REMOVE_TASK', payload: { taskId } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, createNewTask, completeTask, restartTask, removeTask }
 }

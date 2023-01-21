@@ -20,7 +20,13 @@ const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) =
     return { ...state, tasks: newTaskList }
   },
   REMOVE_TASK: ({ state, payload }) => {
-    return state
+    if (!payload?.taskId) return state
+
+    const { taskId } = payload
+
+    const newTaskList = state.tasks.filter((task) => taskId !== task.id)
+
+    return { ...state, tasks: newTaskList }
   },
   MARK_TASK_AS_COMPLETED: ({ state, payload }) => {
     if (!payload?.taskId) return state
