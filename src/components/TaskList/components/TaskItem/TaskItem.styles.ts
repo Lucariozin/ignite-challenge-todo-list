@@ -17,6 +17,7 @@ export const Container = styled.div<ContainerProps>`
 
   border-radius: 8px;
   border: 1px solid ${({ theme, isCompleted }) => (isCompleted ? theme.palette.gray[500] : theme.palette.gray[400])};
+  transition: border 0.2s;
 `
 
 export const CheckboxContainer = styled(Checkbox.Root)`
@@ -65,6 +66,7 @@ export const TaskName = styled.p<TaskNameProps>`
   line-height: 1.1rem;
   text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
   color: ${({ theme, isCompleted }) => (isCompleted ? theme.palette.gray[300] : theme.palette.gray[100])};
+  transition: color 0.2s, text-decoration 0.2s;
 `
 
 export const DeleteTaskButton = styled.button`

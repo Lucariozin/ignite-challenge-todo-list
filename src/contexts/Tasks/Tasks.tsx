@@ -42,5 +42,14 @@ export const useTasks = (): UseTasksState => {
     [dispatch],
   )
 
-  return { ...state, createNewTask, completeTask }
+  const restartTask = useCallback(
+    ({ taskId }: { taskId?: string }) => {
+      if (!taskId) return
+
+      dispatch({ type: 'MARK_TASK_AS_IN_PROGRESS', payload: { taskId } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, createNewTask, completeTask, restartTask }
 }

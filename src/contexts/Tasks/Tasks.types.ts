@@ -16,6 +16,7 @@ export interface UseTasksState {
   tasks: Task[]
   createNewTask: (params: { taskName?: string }) => void
   completeTask: (params: { taskId?: string }) => void
+  restartTask: (params: { taskId?: string }) => void
 }
 
 export interface TasksProviderProps {

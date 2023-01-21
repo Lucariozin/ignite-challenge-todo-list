@@ -32,7 +32,13 @@ const actionFunctionsObj: { [K in ActionTypes]: (params: ActionFunctionParams) =
     return { ...state, tasks: newTaskList }
   },
   MARK_TASK_AS_IN_PROGRESS: ({ state, payload }) => {
-    return state
+    if (!payload?.taskId) return state
+
+    const { taskId } = payload
+
+    const newTaskList = state.tasks.map((task) => (taskId === task.id ? { ...task, completionDate: undefined } : task))
+
+    return { ...state, tasks: newTaskList }
   },
 }
 

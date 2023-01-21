@@ -12,14 +12,17 @@ interface TaskItemProps {
 }
 
 export const TaskItem = ({ name, id, completionDate }: TaskItemProps) => {
-  const { completeTask } = useTasks()
+  const { completeTask, restartTask } = useTasks()
 
   const isCompleted = !!completionDate
 
   const handleCheckedChange = () => {
     if (!isCompleted) {
       completeTask({ taskId: id })
+      return
     }
+
+    restartTask({ taskId: id })
   }
 
   return (
