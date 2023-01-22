@@ -1,3 +1,5 @@
+import { useTasks } from '@contexts/Tasks'
+
 import {
   CompletedTasksAmount,
   CompletedTasksContainer,
@@ -9,16 +11,21 @@ import {
 } from './TaskSummary.styles'
 
 export const TaskSummary = () => {
+  const { tasks } = useTasks()
+
+  const createdTasks = tasks.length
+  const completedTasks = tasks.filter((task) => task.completionDate).length
+
   return (
     <Container>
       <CreatedTasksContainer>
         <CreatedTasksText>Tarefas criadas</CreatedTasksText>
-        <CreatedTasksAmount>0</CreatedTasksAmount>
+        <CreatedTasksAmount>{createdTasks}</CreatedTasksAmount>
       </CreatedTasksContainer>
 
       <CompletedTasksContainer>
         <CompletedTasksText>Concluídas</CompletedTasksText>
-        <CompletedTasksAmount>0</CompletedTasksAmount>
+        <CompletedTasksAmount>{createdTasks > 0 ? `${completedTasks} de ${createdTasks}` : '0'}</CompletedTasksAmount>
       </CompletedTasksContainer>
     </Container>
   )
