@@ -1,2 +1,2 @@
-export { TasksProvider } from './Tasks'
+export { TasksProvider } from './Tasks.context'
 export { useTasks } from './Tasks.hook'

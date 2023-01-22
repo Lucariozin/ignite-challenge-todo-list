@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react'
 
-import { TasksContext } from './Tasks'
+import { TasksContext } from './Tasks.context'
 import { UseTasksState } from './Tasks.types'
 
 export const useTasks = (): UseTasksState => {
