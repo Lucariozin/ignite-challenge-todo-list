@@ -5,6 +5,10 @@ export const TaskSummaryContainer = styled.div`
   max-width: 48rem;
   margin: 5.5rem auto 0;
   padding: 0 1rem;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    margin-top: 4rem;
+  }
 `
 
 export const TaskListContainer = styled.main`
