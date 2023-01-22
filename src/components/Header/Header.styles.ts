@@ -8,6 +8,10 @@ export const Container = styled.header`
   width: 100%;
   height: 12.5rem;
   background-color: ${({ theme }) => theme.palette.gray[700]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    height: 9rem;
+  }
 `
 
 export const Logo = styled.img`
@@ -21,4 +25,8 @@ export const AddNewTaskFormContainer = styled.div`
 
   position: absolute;
   margin-bottom: -12.4rem;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    margin-bottom: -9rem;
+  }
 `

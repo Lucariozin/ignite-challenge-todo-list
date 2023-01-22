@@ -25,6 +25,11 @@ export const Input = styled.input`
   &:focus-visible {
     border-color: ${({ theme }) => theme.palette.purple[500]};
   }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    height: 3rem;
+    font-size: 0.875rem;
+  }
 `
 
 export const Button = styled.button`
@@ -53,6 +58,10 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.palette.blue[400]};
     outline: 1px solid ${({ theme }) => theme.palette.purple[500]};
     outline-offset: 2px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    height: 2.875rem;
   }
 `
 
