@@ -10,6 +10,6 @@ export const TaskSummaryContainer = styled.div`
 export const TaskListContainer = styled.main`
   width: 100%;
   max-width: 48rem;
-  margin: 1.5rem auto 0;
+  margin: 1.5rem auto 3rem auto;
   padding: 0 1rem;
 `

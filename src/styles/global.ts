@@ -9,6 +9,16 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.palette.gray[600]};
+    scrollbar-color: ${({ theme }) => theme.palette.gray[300]};
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.palette.gray[300]};
+      border-radius: 20px;
+    }
   }
 
   body, button, input, textarea {
