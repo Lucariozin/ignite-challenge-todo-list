@@ -16,6 +16,8 @@ export const TaskSummary = () => {
   const createdTasks = tasks.length
   const completedTasks = tasks.filter((task) => task.completionDate).length
 
+  const completedTasksAgainstAllTasksText = createdTasks > 0 ? `${completedTasks} de ${createdTasks}` : '0'
+
   return (
     <Container>
       <CreatedTasksContainer>
@@ -25,7 +27,7 @@ export const TaskSummary = () => {
 
       <CompletedTasksContainer>
         <CompletedTasksText>Concluídas</CompletedTasksText>
-        <CompletedTasksAmount>{createdTasks > 0 ? `${completedTasks} de ${createdTasks}` : '0'}</CompletedTasksAmount>
+        <CompletedTasksAmount>{completedTasksAgainstAllTasksText}</CompletedTasksAmount>
       </CompletedTasksContainer>
     </Container>
   )

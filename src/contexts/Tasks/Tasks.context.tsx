@@ -1,8 +1,9 @@
 import { createContext, useEffect, useReducer } from 'react'
 import { TasksContextState, TasksProviderProps } from './Tasks.types'
 
-import { reducer } from './Tasks.reducer'
 import { getTasksFromLocalStorage, setTasksOnLocalStorage } from './persistence/localStorage'
+
+import { reducer } from './Tasks.reducer'
 
 const initialState: TasksContextState = {
   tasks: [],
