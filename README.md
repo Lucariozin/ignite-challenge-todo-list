@@ -10,6 +10,6 @@
 ## Versão mobile:
 
 <div>
-  <img width="412" src="./public/readme-images/home-no-tasks-mobile.png" />
-  <img width="412" src="./public/readme-images/home-with-tasks-mobile.png" />
+  <img width="412" height="667" src="./public/readme-images/home-no-tasks-mobile.png" />
+  <img width="412" height="667" src="./public/readme-images/home-with-tasks-mobile.png" />
 </div>
